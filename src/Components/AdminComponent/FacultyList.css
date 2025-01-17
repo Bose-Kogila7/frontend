@@ -1,0 +1,56 @@
+/* src/Components/UserComponent/FacultyList.css */
+.faculty-container {
+    padding: 20px;
+    animation: fadeIn 1s ease-in-out;
+}
+
+.faculty-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 20px;
+}
+
+.faculty-table th, .faculty-table td {
+    border: 1px solid #ddd;
+    padding: 8px;
+    text-align: left;
+}
+
+.faculty-table th {
+    background-color: #f2f2f2;
+}
+
+.faculty-table tr:nth-child(even) {
+    background-color: #f9f9f9;
+}
+
+.faculty-table tr:hover {
+    background-color: #f1f1f1;
+}
+
+.error-message {
+    color: red;
+}
+
+.back-button {
+    margin-top: 20px;
+    padding: 10px 20px;
+    background-color: #007bff;
+    color: white;
+    border: none;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.back-button:hover {
+    background-color: #0056b3;
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+    }
+    to {
+        opacity: 1;
+    }
+}

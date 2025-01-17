@@ -1,0 +1,67 @@
+/* FacultyComponent.css */
+.faculty-container {
+    display: flex;
+    flex-direction: column;
+    height: 100vh;
+}
+
+.faculty-header {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 10px;
+    background-color: #f8f9fa;
+    border-bottom: 1px solid #ddd;
+    position: sticky; /* Make the header sticky */
+    top: 0;
+    z-index: 1000;
+}
+
+.content {
+    display: flex;
+    flex: 1;
+    overflow: auto; /* Ensure content is scrollable */
+}
+
+.faculty-main {
+    flex: 1; /* Main content takes up the remaining space */
+    padding: 20px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    transition: margin-left 0.3s ease;
+}
+
+.faculty-main.sidebar-open {
+    margin-left: 250px; /* Adjust main content when sidebar is open */
+}
+
+.main-content {
+    max-width: 800px;
+    width: 100%;
+    padding: 20px;
+    background-color: #fff;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+.faculty-actions {
+    display: flex;
+    gap: 10px;
+    margin-top: 20px;
+}
+
+.faculty-actions button {
+    padding: 10px 20px;
+    border: none;
+    background-color: #007bff;
+    color: white;
+    cursor: pointer;
+    border-radius: 5px;
+    transition: background-color 0.3s ease;
+}
+
+.faculty-actions button:hover {
+    background-color: #0056b3;
+}

@@ -1,0 +1,31 @@
+/* src/components/Navbar.css */
+.navbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1rem;
+    background-color: #333;
+    color: #fff;
+    position: sticky; /* Make the navbar sticky */
+    top: 0;
+    z-index: 1000;
+}
+
+.navbar-brand a {
+    color: #fff;
+    text-decoration: none;
+    font-size: 1.5rem;
+}
+
+.navbar-links a, .navbar-links button {
+    color: #fff;
+    text-decoration: none;
+    margin-left: 1rem;
+    background: none;
+    border: none;
+    cursor: pointer;
+}
+
+.navbar-links button:hover, .navbar-links a:hover {
+    text-decoration: underline;
+}

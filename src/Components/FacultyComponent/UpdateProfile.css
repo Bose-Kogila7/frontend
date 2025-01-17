@@ -1,0 +1,35 @@
+.update-profile-container {
+    padding: 20px;
+}
+
+.update-profile-container h2 {
+    margin-bottom: 20px;
+}
+
+.update-profile-container table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+.update-profile-container table td {
+    padding: 10px;
+}
+
+.update-profile-container table input {
+    width: 100%;
+    padding: 8px;
+    box-sizing: border-box;
+}
+
+.update-profile-container button {
+    margin-top: 20px;
+    padding: 10px 20px;
+    background-color: #4CAF50;
+    color: white;
+    border: none;
+    cursor: pointer;
+}
+
+.update-profile-container button:hover {
+    background-color: #45a049;
+}

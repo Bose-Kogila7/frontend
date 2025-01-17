@@ -1,0 +1,40 @@
+/* src/components/Common/Sidebar.css */
+.sidebar {
+    width: 250px; /* Fixed width for the sidebar */
+    background-color: #f1f1f1;
+    border-right: 1px solid #ddd;
+    transition: transform 0.3s ease;
+    transform: translateX(-100%);
+    padding: 20px;
+    position: fixed; /* Make the sidebar fixed */
+    top: 0; /* Stick to the top of the viewport */
+    height: 100%; /* Full height */
+    z-index: 1000;
+    box-shadow: 2px 0 5px rgba(0, 0, 0, 0.1); /* Add shadow for better visibility */
+}
+
+.sidebar.open {
+    transform: translateX(0);
+}
+
+.sidebar-toggle {
+    font-size: 24px;
+    cursor: pointer;
+    background: none;
+    border: none;
+    position: absolute;
+    top: 10px;
+    left: 10px;
+}
+
+.profile-info {
+    text-align: center;
+    margin-top: 50px; /* Adjust margin to avoid overlap with toggle button */
+}
+
+.profile-photo {
+    width: 100px;
+    height: 100px;
+    border-radius: 50%;
+    margin-bottom: 10px;
+}

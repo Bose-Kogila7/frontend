@@ -1,0 +1,11 @@
+/* Footer.css */
+.footer {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 10px;
+    background-color: #020b14; /* Black background */
+    color: #ffffff; /* White text for visibility */
+    border-top: 1px solid #121111;
+    width: 100%;
+}

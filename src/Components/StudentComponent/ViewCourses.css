@@ -1,0 +1,25 @@
+/* src/components/StudentComponent/ViewCourses.css */
+.courses-container {
+    padding: 20px;
+    background-color: #f9f9f9;
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+.courses-container h2 {
+    margin-bottom: 20px;
+    color: #333;
+}
+
+.courses-container ul {
+    list-style-type: none;
+    padding: 0;
+}
+
+.courses-container li {
+    padding: 10px;
+    background-color: #fff;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    margin-bottom: 10px;
+}
