@@ -8,4 +8,5 @@
     color: #ffffff; /* White text for visibility */
     border-top: 1px solid #121111;
     width: 100%;
+    bottom: 0;
 }

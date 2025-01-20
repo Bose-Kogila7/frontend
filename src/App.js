@@ -19,6 +19,10 @@ import UpdateFacultyProfile from './Components/FacultyComponent/UpdateFacultyPro
 import Users from './Components/UserComponent/Users';
 import Students from './Components/AdminComponent/Students';
 import FacultyList from './Components/AdminComponent/FacultyList';
+import Signup from './Components/AuthComponent/Signup';
+import AddStudent from './Components/AdminComponent/AddStudent';
+import AddFaculty from './Components/AdminComponent/AddFaculty';
+import Enrollments from './Components/AdminComponent/Enrollments';
 
 const App = () => {
     const [userRole, setUserRole] = useState(localStorage.getItem('role'));
@@ -51,6 +55,7 @@ const App = () => {
                 <Routes>
                     <Route path="/" element={<Home />} />
                     <Route path="/login" element={<Login />} />
+                    <Route path="/signup" element={<Signup />} />
                     <Route path="/profile" element={<Profile />} />
                     <Route path="/courses" element={<Courses />} />
                     <Route path="/departments" element={<Departments />} />
@@ -66,6 +71,9 @@ const App = () => {
                     <Route path="/users" element={<Users />} />
                     <Route path="/students" element={<Students />} />
                     <Route path="/facultylist" element={<FacultyList />} />
+                    <Route path="/add-student" element={<AddStudent />} />
+                    <Route path="/add-faculty" element={<AddFaculty />} />
+                    <Route path="/enrollments" element={<Enrollments />} />
                 </Routes>
                 <Footer />
             </div>

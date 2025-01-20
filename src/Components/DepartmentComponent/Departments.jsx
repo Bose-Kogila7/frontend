@@ -19,11 +19,12 @@ const Departments = () => {
     }, []);
 
     return (
-        <div>
+        <div className="departments-container">
             <h2>Departments</h2>
-            <table>
+            <table className="departments-table">
                 <thead>
                     <tr>
+                        <th>Department Id</th>
                         <th>Name</th>
                         <th>Description</th>
                     </tr>
@@ -31,6 +32,7 @@ const Departments = () => {
                 <tbody>
                     {departments.map(department => (
                         <tr key={department.id}>
+                            <td>{department.id}</td>
                             <td>{department.name}</td>
                             <td>{department.description}</td>
                         </tr>

@@ -2,13 +2,14 @@ import React, { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import axiosInstance from '../AuthComponent/axiosConfig';
 import Sidebar from '../Common/Sidebar';
-import Footer from '../HomeComponent/Footer';
+
 import './FacultyComponent.css';
 
 const Faculty = () => {
     const [faculty, setFaculty] = useState(null);
     const [sidebarOpen, setSidebarOpen] = useState(false);
     const [loading, setLoading] = useState(true);
+    const [errorMessage, setErrorMessage] = useState('');
     const navigate = useNavigate();
 
     useEffect(() => {
@@ -19,6 +20,7 @@ const Faculty = () => {
                 setLoading(false);
             } catch (error) {
                 console.error('Error fetching faculty data:', error);
+                setErrorMessage('You are not a registered faculty. Contact your administrator.');
                 setLoading(false);
             }
         };
@@ -34,9 +36,20 @@ const Faculty = () => {
         navigate(`/faculty/update/${faculty.id}`);
     };
 
-    const viewStudentsByCourse = () => {
-        navigate(`/students-by-course/${faculty.id}`);
+    const viewStudentsByCourse = async () => {
+        try {
+            await axiosInstance.get(`/api/faculty/students-by-course/${faculty.id}`);
+            navigate(`/students-by-course/${faculty.id}`);
+        } catch (error) {
+            console.error('Error fetching students by course:', error);
+            setErrorMessage('You are not a registered faculty. Contact your administrator.');
+        }
     };
+
+    const handleClosePopup = () => {
+        setErrorMessage('');
+    };
+
 
     if (loading) {
         return <p>Loading...</p>;
@@ -68,7 +81,16 @@ const Faculty = () => {
                     </div>
                 </main>
             </div>
-            <Footer />
+            
+            {errorMessage && (
+                <div className="popup">
+                    <div className="popup-content">
+                        <h3>Error</h3>
+                        <p>{errorMessage}</p>
+                        <button onClick={handleClosePopup}>Close</button>
+                    </div>
+                </div>
+            )}
         </div>
     );
 };

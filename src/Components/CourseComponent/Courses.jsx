@@ -19,24 +19,26 @@ const Courses = () => {
     }, []);
 
     return (
-        <div>
+        <div className="courses-container">
             <h2>Courses</h2>
-            <table>
+            <table className="courses-table">
                 <thead>
                     <tr>
+                        <th>Id</th>
                         <th>Title</th>
                         <th>Description</th>
-                        <th>Department</th>
+                        <th>Department_Id</th>
                         <th>Faculty</th>
                     </tr>
                 </thead>
                 <tbody>
                     {courses.map(course => (
                         <tr key={course.id}>
+                            <td>{course.id}</td>
                             <td>{course.title}</td>
                             <td>{course.description}</td>
-                            <td>{course.department?.name}</td>
-                            <td>{course.faculty?.name}</td>
+                            <td>{course.departmentId}</td>
+                            <td>{course.facultyName}</td>
                         </tr>
                     ))}
                 </tbody>

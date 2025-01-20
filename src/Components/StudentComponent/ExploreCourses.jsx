@@ -7,6 +7,7 @@ const ExploreCourses = ({ studentId }) => {
     const [selectedCourse, setSelectedCourse] = useState(null);
     const [showConfirmPopup, setShowConfirmPopup] = useState(false);
     const [showSuccessPopup, setShowSuccessPopup] = useState(false);
+    const [errorMessage, setErrorMessage] = useState('');
 
     useEffect(() => {
         const fetchCourses = async () => {
@@ -20,15 +21,13 @@ const ExploreCourses = ({ studentId }) => {
 
         fetchCourses();
     }, []);
-    console.log(courses);
+
     const handleEnrollClick = (course) => {
         setSelectedCourse(course);
         setShowConfirmPopup(true);
     };
 
     const handleConfirmEnroll = async () => {
-        console.log('Student ID:', studentId); // Debugging: Log studentId
-        console.log('Selected Course:', selectedCourse); // Debugging: Log selectedCourse
         if (!studentId || !selectedCourse || !selectedCourse.id) {
             console.error('Student ID or Course ID is null');
             return;
@@ -45,12 +44,14 @@ const ExploreCourses = ({ studentId }) => {
             setShowSuccessPopup(true);
         } catch (error) {
             console.error('Error enrolling in course:', error);
+            setErrorMessage('You are not a student. Contact your administrator.');
         }
     };
 
     const handleClosePopup = () => {
         setShowConfirmPopup(false);
         setShowSuccessPopup(false);
+        setErrorMessage('');
     };
 
     return (
@@ -86,6 +87,16 @@ const ExploreCourses = ({ studentId }) => {
                     <div className="popup-content">
                         <h3>Congratulations!</h3>
                         <p>You are enrolled in the course: {selectedCourse.title}</p>
+                        <button onClick={handleClosePopup}>Close</button>
+                    </div>
+                </div>
+            )}
+
+            {errorMessage && (
+                <div className="popup">
+                    <div className="popup-content">
+                        <h3>Error</h3>
+                        <p>{errorMessage}</p>
                         <button onClick={handleClosePopup}>Close</button>
                     </div>
                 </div>

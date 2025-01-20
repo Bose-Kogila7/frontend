@@ -1,11 +1,13 @@
 // src/Components/UserComponent/Users.js
 import React, { useEffect, useState } from 'react';
 import axiosInstance from '../AuthComponent/axiosConfig';
+import { useNavigate } from 'react-router-dom';
 import './Users.css';
 
 const Users = () => {
     const [users, setUsers] = useState([]);
     const [error, setError] = useState('');
+    const navigate = useNavigate();
 
     useEffect(() => {
         const fetchUsers = async () => {
@@ -49,6 +51,7 @@ const Users = () => {
                     ))}
                 </tbody>
             </table>
+            <button className="back-button" onClick={() => navigate('/admin')}>Back to Admin</button>
         </div>
     );
 };

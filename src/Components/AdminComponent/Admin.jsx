@@ -2,7 +2,6 @@ import React, { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import axiosInstance from '../AuthComponent/axiosConfig';
 import Sidebar from '../Common/Sidebar';
-import Footer from '../HomeComponent/Footer';
 import './AdminComponent.css';
 
 const Admin = () => {
@@ -52,6 +51,18 @@ const Admin = () => {
         navigate('/facultylist'); // Navigate to the FacultyList component
     };
 
+    const handleAddStudent = () => {
+        navigate('/add-student');
+    };
+
+    const handleAddFaculty = () => {
+        navigate('/add-faculty');
+    };
+
+    const handleViewEnrollments = () => {
+        navigate('/enrollments'); // Navigate to the Enrollments component
+    };
+
     if (loading) {
         return <p>Loading...</p>;
     }
@@ -77,15 +88,16 @@ const Admin = () => {
                         <h2>Welcome, {admin.name}</h2>
                         <div className="admin-actions">
                             <button onClick={handleViewStudents}>View All Students</button>
-                            <button onClick={handleViewFaculty}>View All Faculty</button> {/* Add View All Faculty button */}
-                            <button onClick={() => console.log('Add Student')}>Add Student</button>
-                            <button onClick={() => console.log('Add Faculty')}>Add Faculty</button>
+                            <button onClick={handleViewFaculty}>View All Faculty</button>
+                            <button onClick={handleAddStudent}>Add Student</button>
+                            <button onClick={handleAddFaculty}>Add Faculty</button>
                             <button onClick={handleViewUsers}>View Users</button>
+                            <button onClick={handleViewEnrollments}>View Enrollments</button>
                         </div>
                     </div>
                 </main>
             </div>
-            <Footer />
+            
         </div>
     );
 };
