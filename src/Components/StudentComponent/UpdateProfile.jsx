@@ -1,34 +1,49 @@
 import React, { useState, useEffect } from 'react';
-import { useParams, useNavigate } from 'react-router-dom';
+import { useParams, useNavigate, useLocation } from 'react-router-dom';
 import axiosInstance from '../AuthComponent/axiosConfig';
 import './UpdateProfile.css';
 
 const UpdateProfile = () => {
     const { studentId } = useParams();
     const navigate = useNavigate();
-    const [student, setStudent] = useState(null);
-    const [loading, setLoading] = useState(true);
-    const [updatedData, setUpdatedData] = useState({});
+    const location = useLocation();
+    const [student, setStudent] = useState(location.state?.user || null);
+    const [loading, setLoading] = useState(!location.state?.user);
+    const [updatedData, setUpdatedData] = useState(location.state?.user || {});
 
     useEffect(() => {
-        const fetchStudentData = async () => {
-            try {
-                const response = await axiosInstance.get('/api/student/profile');
-                setStudent(response.data);
-                setUpdatedData(response.data);
-                setLoading(false);
-            } catch (error) {
-                console.error('Error fetching student data:', error);
-                setLoading(false);
-            }
-        };
+        if (!location.state?.user) {
+            const fetchStudentData = async () => {
+                try {
+                    const response = await axiosInstance.get('/api/student/profile');
+                    setStudent(response.data);
+                    setUpdatedData(response.data);
+                    setLoading(false);
+                } catch (error) {
+                    console.error('Error fetching student data:', error);
+                    setLoading(false);
+                }
+            };
 
-        fetchStudentData();
-    }, []);
+            fetchStudentData();
+        }
+    }, [location.state?.user]);
 
     const handleChange = (e) => {
         const { name, value } = e.target;
         setUpdatedData({ ...updatedData, [name]: value });
+    };
+
+    // Function to handle file upload
+    const handleFileUpload = (e) => {
+        const file = e.target.files[0];
+        if (file) {
+            const reader = new FileReader();
+            reader.onloadend = () => {
+                setUpdatedData({ ...updatedData, photo: reader.result }); // Set Base64 string to photo field
+            };
+            reader.readAsDataURL(file); // Convert file to Base64
+        }
     };
 
     const handleSubmit = async (e) => {
@@ -37,7 +52,7 @@ const UpdateProfile = () => {
             const payload = {
                 id: updatedData.id,
                 userId: updatedData.userId,
-                photo: updatedData.photo,
+                photo: updatedData.photo, // Include the Base64 photo string
                 departmentId: updatedData.departmentId,
                 year: updatedData.year,
                 name: updatedData.name,
@@ -45,7 +60,7 @@ const UpdateProfile = () => {
                 phone: updatedData.phone,
                 userName: updatedData.userName,
                 role: updatedData.role,
-                password: updatedData.password || student.password // Ensure password is included
+                password: updatedData.password || student.password,
             };
             await axiosInstance.put(`/api/student/update/${studentId}`, payload);
             alert('Profile updated successfully');
@@ -71,8 +86,32 @@ const UpdateProfile = () => {
                     <tbody>
                         <tr>
                             <td><label htmlFor="photo">Photo:</label></td>
-                            <td><input type="text" id="photo" name="photo" value={updatedData.photo} onChange={handleChange} /></td>
+                            <td>
+                                <input
+                                    type="text"
+                                    id="photo"
+                                    name="photo"
+                                    value={updatedData.photo}
+                                    onChange={handleChange}
+                                    readOnly // Make the input read-only
+                                />
+                                <input
+                                    type="file"
+                                    id="upload-photo"
+                                    accept="image/*"
+                                    style={{ display: 'none' }}
+                                    onChange={handleFileUpload}
+                                />
+                                <button
+                                    type="button"
+                                    onClick={() => document.getElementById('upload-photo').click()}
+                                    className="upload-photo-button"
+                                >
+                                    Upload Photo
+                                </button>
+                            </td>
                         </tr>
+                        {/* Rest of the form fields */}
                         <tr>
                             <td><label htmlFor="departmentId">Department ID:</label></td>
                             <td><input type="text" id="departmentId" name="departmentId" value={updatedData.departmentId} onChange={handleChange} /></td>

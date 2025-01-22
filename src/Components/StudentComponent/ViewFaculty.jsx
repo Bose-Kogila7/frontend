@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import axiosInstance from '../AuthComponent/axiosConfig';
-import '../Common/TableStyles.css'
+import '../Common/TableStyles.css';
 
 const ViewFaculty = () => {
     const [faculty, setFaculty] = useState([]);

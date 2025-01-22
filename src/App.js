@@ -23,6 +23,8 @@ import Signup from './Components/AuthComponent/Signup';
 import AddStudent from './Components/AdminComponent/AddStudent';
 import AddFaculty from './Components/AdminComponent/AddFaculty';
 import Enrollments from './Components/AdminComponent/Enrollments';
+import 'bootstrap/dist/css/bootstrap.min.css';
+import 'bootstrap/dist/js/bootstrap.bundle.min';
 
 const App = () => {
     const [userRole, setUserRole] = useState(localStorage.getItem('role'));
@@ -65,7 +67,7 @@ const App = () => {
                     <Route path="/student/search" element={<SearchStudents />} />
                     <Route path="/student/courses" element={<ViewCourses />} />
                     <Route path="/student/faculty" element={<ViewFaculty />} />
-                    <Route path="/student/update/:studentId" element={<UpdateProfile />} />
+                    <Route path="/update-profile/:studentId" element={<UpdateProfile />} />
                     <Route path="/students-by-course/:facultyId" element={<StudentList />} />
                     <Route path="/faculty/update/:facultyId" element={<UpdateFacultyProfile />} />
                     <Route path="/users" element={<Users />} />

@@ -8,6 +8,7 @@ const ExploreCourses = ({ studentId }) => {
     const [showConfirmPopup, setShowConfirmPopup] = useState(false);
     const [showSuccessPopup, setShowSuccessPopup] = useState(false);
     const [errorMessage, setErrorMessage] = useState('');
+    const [currentIndex, setCurrentIndex] = useState(0);
 
     useEffect(() => {
         const fetchCourses = async () => {
@@ -44,7 +45,12 @@ const ExploreCourses = ({ studentId }) => {
             setShowSuccessPopup(true);
         } catch (error) {
             console.error('Error enrolling in course:', error);
-            setErrorMessage('You are not a student. Contact your administrator.');
+            if (error.response && error.response.status === 400) {
+                setErrorMessage(error.response.data);
+            } else {
+                setErrorMessage('An unexpected error occurred. Please try again later.');
+            }
+            setShowConfirmPopup(false);
         }
     };
 
@@ -54,21 +60,33 @@ const ExploreCourses = ({ studentId }) => {
         setErrorMessage('');
     };
 
+    const handleNext = () => {
+        setCurrentIndex((prevIndex) => (prevIndex + 1) % courses.length);
+    };
+
+    const handlePrev = () => {
+        setCurrentIndex((prevIndex) => (prevIndex - 1 + courses.length) % courses.length);
+    };
+
     return (
         <div className="explore-courses-container">
             <h2>Explore Courses</h2>
-            <div className="courses-grid">
-                {courses.map((course) => (
-                    <div className="course-box" key={course.id}>
-                        <img src="https://via.placeholder.com/100" alt="Course" />
-                        <h3>{course.title}</h3>
-                        <p><strong>Course ID:</strong> {course.id}</p>
-                        <p><strong>Description:</strong> {course.description}</p>
-                        <p><strong>Department ID:</strong> {course.departmentId}</p>
-                        <p><strong>Faculty Name:</strong> {course.facultyName}</p>
-                        <button onClick={() => handleEnrollClick(course)}>Enroll</button>
-                    </div>
-                ))}
+            <div className="courses-carousel">
+                <button className="carousel-button prev" onClick={handlePrev}>‹</button>
+                <div className="course-box">
+                    {courses.length > 0 && (
+                        <>
+                            <img src="CollegeCourse.jpg" alt="Course" />
+                            <h3>{courses[currentIndex].title}</h3>
+                            <p><strong>Course ID:</strong> {courses[currentIndex].id}</p>
+                            <p><strong>Description:</strong> {courses[currentIndex].description}</p>
+                            <p><strong>Department ID:</strong> {courses[currentIndex].departmentId}</p>
+                            <p><strong>Faculty Name:</strong> {courses[currentIndex].facultyName}</p>
+                            <button onClick={() => handleEnrollClick(courses[currentIndex])}>Enroll</button>
+                        </>
+                    )}
+                </div>
+                <button className="carousel-button next" onClick={handleNext}>›</button>
             </div>
 
             {showConfirmPopup && (

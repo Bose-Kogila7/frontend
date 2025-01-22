@@ -1,9 +1,8 @@
-// src/components/Navbar.js
 import React from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import './Navbar.css';
 
-const Navbar = ({onLogout}) => {
+const Navbar = ({ onLogout }) => {
     const navigate = useNavigate();
     const token = localStorage.getItem('token');
 
@@ -17,9 +16,14 @@ const Navbar = ({onLogout}) => {
     return (
         <nav className="navbar">
             <div className="navbar-brand">
-                <Link to="/">College Name</Link>
+                <Link to="/">KBSR INSTITUTE OF TECHNOLOGY</Link>
             </div>
             <div className="navbar-links">
+                <Link to="/">Home</Link>
+                <a href="#about">About</a>
+                <a href="#programs">Programs</a>
+                <a href="#admissions">Admissions</a>
+                <a href="#contact">Contact</a>
                 {token ? (
                     <>
                         <Link to="/profile">Profile</Link>

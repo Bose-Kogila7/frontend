@@ -1,4 +1,3 @@
-// src/components/AddStudent.js
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import axiosInstance from '../AuthComponent/axiosConfig';
@@ -16,8 +15,6 @@ const AddStudent = () => {
         role: 'student',
         userName: ''
     });
-    const [showConfirmation, setShowConfirmation] = useState(false);
-    const [showSuccess, setShowSuccess] = useState(false);
     const [errorMessage, setErrorMessage] = useState('');
     const navigate = useNavigate();
 
@@ -26,25 +23,20 @@ const AddStudent = () => {
         setStudent({ ...student, [name]: value });
     };
 
-    const handleSubmit = (e) => {
+    const handleSubmit = async (e) => {
         e.preventDefault();
-        setShowConfirmation(true);
-    };
-
-    const confirmSubmit = async () => {
-        try {
-            await axiosInstance.post('/api/admin/add-Student', student);
-            setShowConfirmation(false);
-            setShowSuccess(true);
-        } catch (error) {
-            setShowConfirmation(false);
-            setErrorMessage(error.response?.data || 'An error occurred. Please try again.');
+        const confirm = window.confirm("Are you sure you want to add this student?");
+        if (confirm) {
+            try {
+                const response = await axiosInstance.post('/api/admin/add-Student', student);
+                console.log('Response:', response);
+                window.alert("Student added successfully!");
+                navigate('/admin');
+            } catch (error) {
+                console.error('Error:', error);
+                setErrorMessage(error.response?.data || 'An error occurred. Please try again.');
+            }
         }
-    };
-
-    const handleBackToHome = () => {
-        setShowSuccess(false);
-        navigate('/admin');
     };
 
     return (
@@ -85,23 +77,6 @@ const AddStudent = () => {
                 </label>
                 <button type="submit">Submit</button>
             </form>
-            {showConfirmation && (
-                <div className="modal">
-                    <div className="modal-content">
-                        <p>Are you sure you want to add this student?</p>
-                        <button onClick={confirmSubmit}>Yes</button>
-                        <button onClick={() => setShowConfirmation(false)}>No</button>
-                    </div>
-                </div>
-            )}
-            {showSuccess && (
-                <div className="modal">
-                    <div className="modal-content">
-                        <p>Student added successfully!</p>
-                        <button onClick={handleBackToHome}>Back to Home</button>
-                    </div>
-                </div>
-            )}
             {errorMessage && (
                 <div className="error-message">
                     <p>{errorMessage}</p>

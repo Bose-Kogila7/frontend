@@ -56,8 +56,18 @@ const Student = () => {
                     toggleSidebar={toggleSidebar}
                 />
                 <main className={`student-main ${sidebarOpen ? 'sidebar-open' : ''}`}>
+                    <div className="make-center">
                     <div className="main-content">
                         <h2>Welcome, {student.name}</h2>
+                        <div className="chancellor-speech">
+                            <div className="speech-image">
+                                <img src="Chancellor.jpg" alt="Chancellor" />
+                            </div>
+                            <div className="speech-text">
+                                <h3>Chancellor's Speech</h3>
+                                <p>Welcome to our esteemed institution. Our mission is to provide quality education and foster a nurturing environment for our students. We are committed to excellence and innovation in all our endeavors.</p>
+                            </div>
+                        </div>
                         <div className="student-actions">
                             <button onClick={() => navigate('/student/search')}>Search Students</button>
                             <button onClick={() => navigate('/student/courses')}>View Courses</button>
@@ -65,6 +75,7 @@ const Student = () => {
                         </div>
                         
                         <ExploreCourses studentId={student.id} />
+                    </div>
                     </div>
                 </main>
             </div>

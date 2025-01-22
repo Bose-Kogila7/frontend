@@ -4,6 +4,7 @@
     background-color: #f9f9f9;
     border-radius: 8px;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    text-align: center;
 }
 
 .explore-courses-container h2 {
@@ -11,15 +12,18 @@
     color: #333;
 }
 
-.courses-grid {
+.courses-carousel {
     display: flex;
-    flex-wrap: wrap;
-    gap: 20px;
-    justify-content: space-between; /* Ensure space between items */
+    align-items: center;
+    justify-content: center;
+    position: relative;
+    width: 100%;
+    max-width: 800px;
+    margin: 0 auto;
+    overflow: hidden;
 }
 
 .course-box {
-    flex: 1 1 calc(33.333% - 20px); /* Three boxes per row with gap */
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -28,11 +32,22 @@
     border: 1px solid #ddd;
     border-radius: 8px;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-    transition: transform 0.3s ease;
+    width: 100%;
+    max-width: 500px;
+    text-align: center;
+    transition: transform 0.5s ease-in-out, opacity 0.5s ease-in-out;
+    transform: translateX(0);
+    opacity: 1;
 }
 
-.course-box:hover {
-    transform: translateY(-5px);
+.course-box.slide-left {
+    transform: translateX(-100%);
+    opacity: 0;
+}
+
+.course-box.slide-right {
+    transform: translateX(100%);
+    opacity: 0;
 }
 
 .course-box img {
@@ -40,18 +55,19 @@
     height: 100px;
     object-fit: cover;
     border-radius: 50%;
-    margin-bottom: 10px;
+    margin-bottom: 15px;
 }
 
 .course-box h3 {
-    margin: 10px 0;
+    margin: 15px 0;
     color: #007bff;
+    font-size: 1.5em;
 }
 
 .course-box p {
-    margin: 5px 0;
+    margin: 8px 0;
     color: #555;
-    text-align: center;
+    font-size: 0.9em;
 }
 
 .course-box button {
@@ -61,10 +77,42 @@
     border: none;
     border-radius: 4px;
     cursor: pointer;
-    margin-top: 10px;
+    margin-top: 15px;
+    font-size: 0.9em;
 }
 
 .course-box button:hover {
+    background-color: #0056b3;
+}
+
+.carousel-button {
+    background-color: #007bff;
+    color: white;
+    border: none;
+    border-radius: 50%;
+    width: 40px;
+    height: 40px;
+    font-size: 24px;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    z-index: 10;
+    transition: background-color 0.3s ease;
+}
+
+.carousel-button.prev {
+    left: 10px;
+}
+
+.carousel-button.next {
+    right: 10px;
+}
+
+.carousel-button:hover {
     background-color: #0056b3;
 }
 
@@ -106,4 +154,44 @@
 
 .popup-content button:hover {
     background-color: #0056b3;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .course-box {
+        width: 90%;
+        padding: 15px;
+    }
+
+    .carousel-button {
+        width: 30px;
+        height: 30px;
+        font-size: 18px;
+    }
+}
+
+@media (max-width: 480px) {
+    .course-box {
+        width: 100%;
+        padding: 10px;
+    }
+
+    .course-box img {
+        width: 80px;
+        height: 80px;
+    }
+
+    .course-box h3 {
+        font-size: 1.2em;
+    }
+
+    .course-box p {
+        font-size: 0.8em;
+    }
+
+    .carousel-button {
+        width: 25px;
+        height: 25px;
+        font-size: 16px;
+    }
 }

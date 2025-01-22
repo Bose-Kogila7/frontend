@@ -3,8 +3,6 @@
     display: flex;
     flex-direction: column;
     height: 100vh;
-    
-   
 }
 
 .student-header {
@@ -23,6 +21,12 @@
     display: flex;
     flex: 1;
     overflow: auto; /* Ensure content is scrollable */
+}
+
+.make-center{
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }
 
 .student-main {
@@ -65,6 +69,41 @@
     background-color: #0056b3;
 }
 
+/* Chancellor's Speech Section */
+.chancellor-speech {
+    display: flex;
+    align-items: center;
+    background: rgba(255, 255, 255, 0.1);
+    border-radius: 10px;
+    padding: 20px;
+    margin-bottom: 20px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.speech-image {
+    flex: 1;
+    padding-right: 20px;
+}
+
+.speech-image img {
+    width: 100%;
+    border-radius: 10px;
+}
+
+.speech-text {
+    flex: 2;
+}
+
+.speech-text h3 {
+    font-size: 1.5em;
+    margin-bottom: 10px;
+}
+
+.speech-text p {
+    font-size: 1em;
+    line-height: 1.5;
+}
+
 /* Sidebar.css */
 .sidebar {
     width: 250px; /* Fixed width for the sidebar */
@@ -104,4 +143,15 @@
     height: 100px;
     border-radius: 50%;
     margin-bottom: 10px;
+}
+
+@media (max-width: 768px) {
+    .chancellor-speech {
+        flex-direction: column;
+    }
+
+    .speech-image {
+        padding-right: 0;
+        margin-bottom: 20px;
+    }
 }

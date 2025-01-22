@@ -2,7 +2,6 @@ import React, { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import axiosInstance from '../AuthComponent/axiosConfig';
 import Sidebar from '../Common/Sidebar';
-
 import './FacultyComponent.css';
 
 const Faculty = () => {
@@ -38,7 +37,7 @@ const Faculty = () => {
 
     const viewStudentsByCourse = async () => {
         try {
-            await axiosInstance.get(`/api/faculty/students-by-course/${faculty.id}`);
+            await axiosInstance.get(`/api/faculty/student-by-course/${faculty.id}`);
             navigate(`/students-by-course/${faculty.id}`);
         } catch (error) {
             console.error('Error fetching students by course:', error);
@@ -49,7 +48,6 @@ const Faculty = () => {
     const handleClosePopup = () => {
         setErrorMessage('');
     };
-
 
     if (loading) {
         return <p>Loading...</p>;
@@ -72,11 +70,22 @@ const Faculty = () => {
                     toggleSidebar={toggleSidebar}
                 />
                 <main className={`faculty-main ${sidebarOpen ? 'sidebar-open' : ''}`}>
-                    <div className="main-content">
-                        <h2>Welcome, {faculty.name}</h2>
-                        <div className="faculty-actions">
-                            <button onClick={viewStudentsByCourse}>View Students by Course</button>
-                            <button onClick={handleUpdate}>Update Profile</button>
+                    <div className="make-center">
+                        <div className="main-content">
+                            <h2>Welcome, {faculty.name}</h2>
+                            <div className="chancellor-speech">
+                                <div className="speech-image">
+                                    <img src="Chancellor.jpg" alt="Chancellor" />
+                                </div>
+                                <div className="speech-text">
+                                    <h3>Chancellor's Speech</h3>
+                                    <p>Welcome to our esteemed institution. Our mission is to provide quality education and foster a nurturing environment for our students. We are committed to excellence and innovation in all our endeavors.</p>
+                                </div>
+                            </div>
+                            <div className="faculty-actions">
+                                <button onClick={viewStudentsByCourse}>View Students by Course</button>
+                                <button onClick={handleUpdate}>Update Profile</button>
+                            </div>
                         </div>
                     </div>
                 </main>
