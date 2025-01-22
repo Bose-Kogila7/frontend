@@ -11,6 +11,16 @@
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
 }
 
+.navbar-brand {
+    display: flex;
+    align-items: center;
+}
+
+.navbar-logo {
+    height: 40px; /* Adjust the height as needed */
+    margin-right: 10px; /* Space between logo and text */
+}
+
 .navbar-brand a {
     color: #fff;
     text-decoration: none;

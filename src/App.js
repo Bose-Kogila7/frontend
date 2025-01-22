@@ -25,6 +25,7 @@ import AddFaculty from './Components/AdminComponent/AddFaculty';
 import Enrollments from './Components/AdminComponent/Enrollments';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import 'bootstrap/dist/js/bootstrap.bundle.min';
+import './App.css';
 
 const App = () => {
     const [userRole, setUserRole] = useState(localStorage.getItem('role'));

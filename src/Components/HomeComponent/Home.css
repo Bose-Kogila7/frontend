@@ -1,8 +1,31 @@
 /* Import Google Fonts */
-@import url('https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,100..1000;1,9..40,100..1000&family=Rubik:ital,wght@0,300..900;1,300..900&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,100..1000;1,9..40,100..1000&family=Rubik:ital,wght@0,300..900&display=swap');
 
 /* Apply Google Fonts to the entire page */
 body {
+    font-family: 'DM Sans', sans-serif;
+}
+
+/* Ensure font-family is applied to all elements */
+.home-header,
+.home-header h1,
+.home-header h2,
+.home-header p,
+.home-description,
+.home-description h4,
+.home-description p,
+.home-life,
+.home-life h2,
+.home-life p,
+.home-links,
+.home-links h2,
+.home-links a,
+.home-alumni,
+.home-alumni h2,
+.home-alumni p,
+.home-address,
+.home-address h2,
+.home-address p {
     font-family: 'DM Sans', sans-serif;
 }
 
@@ -16,13 +39,18 @@ body {
     text-align: center;
     padding: 20px;
 }
+.home-header-image {
+    width: 150px; /* Adjust the width as needed */
+    height: auto;
+    margin-bottom: 20px; /* Space between the image and the text */
+}
 
-.home-header h1 {
+.home-header h2 {
     font-size: 2.5em;
     font-weight: bold;
 }
 
-.home-header p {
+.home-header h1 {
     font-size: 1.2em;
 }
 
@@ -42,6 +70,10 @@ body {
     padding: 20px;
     background: rgba(255, 255, 255, 0.1);
     border-radius: 10px;
+}
+
+.scrollspy-example h4 {
+    color: #101010;
 }
 
 .description-box {
@@ -135,8 +167,8 @@ body {
 }
 
 .alumni-slide {
-    width: 300px;
-    height: 300px;
+    width: 300px; /* Fixed width */
+    height: 400px; /* Fixed height */
     padding: 20px;
     background: rgba(255, 255, 255, 0.1);
     border-radius: 10px;
@@ -146,11 +178,12 @@ body {
     flex-direction: column;
     justify-content: center;
     align-items: center;
+    box-sizing: border-box; /* Include padding in height calculation */
 }
 
 .alumni-slide img {
-    width: 80%;
-    height: 60%;
+    width: 100%;
+    height: 60%; /* Fixed height for images */
     border-radius: 10px;
     margin-bottom: 10px;
     object-fit: cover;

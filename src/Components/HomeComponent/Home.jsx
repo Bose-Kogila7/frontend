@@ -35,33 +35,34 @@ const Home = () => {
     };
 
     const alumniData = [
-        { img: 'alumni1.jpg', message: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer nec odio. Praesent libero. Sed cursus ante dapibus diam.' },
-        { img: 'alumni2.jpg', message: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer nec odio. Praesent libero. Sed cursus ante dapibus diam.' },
-        { img: 'alumni3.jpg', message: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer nec odio. Praesent libero. Sed cursus ante dapibus diam.' },
-        { img: 'alumni4.jpg', message: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer nec odio. Praesent libero. Sed cursus ante dapibus diam.' },
-        { img: 'alumni5.jpg', message: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer nec odio. Praesent libero. Sed cursus ante dapibus diam.' },
-        { img: 'alumni6.jpg', message: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer nec odio. Praesent libero. Sed cursus ante dapibus diam.' },
-        { img: 'alumni7.jpg', message: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer nec odio. Praesent libero. Sed cursus ante dapibus diam.' }
+        { img: 'alumni7.jpg', name:'Kiran Bedi', designation:'Former Lieutenant Governor of Puducherry', message: ' "KBSRIT instilled values of integrity and service in me. The holistic education was key to my personal and professional growth."' },
+        { img: 'alumni2.jpg', name : 'SS Rajamouli', designation:'Most Successful director of Indian cinema', message: '"The creative freedom at KBSRIT nurtured my passion for filmmaking. It was instrumental in honing my storytelling skills."' },
+        { img: 'alumni3.jpg', name:'G Mahesh Babu', designation:'A Big Star of Cinema Industry', message: '"KBSRIT gave me the confidence and foundation to excel in the film industry. The supportive environment was key to my success."' },
+        { img: 'alumni4.jpg', name:'AR Rahman', designation:'Biggest Music Director of Indian cinema', message: '"KBSRIT helped me discover and refine my musical talents. The colleges support was crucial in my journey to becoming a music director."' },
+        { img: 'alumni5.jpg', name:'MS Dhoni', designation:'Former Indian cricket team captain', message: '"The discipline and leadership skills I gained at KBSRIT have been invaluable. The holistic education prepared me for all challenges."' },
+        { img: 'alumni1.jpg', name:'Ram Gopal Varma', designation:'Philosopher and director of art', message: '"KBSRITs emphasis on critical thinking helped shape my artistic vision. The diverse experiences were pivotal in my development."' },
+        { img: 'alumni6.jpg', name:'Nirmala Sitharaman', designation:'Minister of Corporate Affairs of India',  message: '"The comprehensive education at KBSRIT equipped me with essential skills. The emphasis on excellence and ethics has been a cornerstone of my success."' }
     ];
 
     return (
         <div className="home">
             <header className="home-header">
-                <h1>Welcome to KBSRIT</h1>
-                <p>Our college motto and description will go here.</p>
+                <img src="HomeLogo2.jpg" alt="College Logo" className="home-header-image" />
+                <h2>WELCOME  TO  KBSRIT </h2>
+                <h1>EDUCATION & EVOLUTION</h1>
             </header>
             <section id="about" className="home-description">
                 <div className="scrollspy-example" tabIndex="0">
-                    <h4 id="scrollspyHeading1">First heading</h4>
-                    <p>Our college offers a variety of programs and activities to help students achieve their goals. We are committed to providing a supportive and enriching environment for all our students.</p>
-                    <h4 id="scrollspyHeading2">Second heading</h4>
-                    <p>Our college offers a variety of programs and activities to help students achieve their goals. We are committed to providing a supportive and enriching environment for all our students.</p>
-                    <h4 id="scrollspyHeading3">Third heading</h4>
-                    <p>Our college offers a variety of programs and activities to help students achieve their goals. We are committed to providing a supportive and enriching environment for all our students.</p>
-                    <h4 id="scrollspyHeading4">Fourth heading</h4>
-                    <p>Our college offers a variety of programs and activities to help students achieve their goals. We are committed to providing a supportive and enriching environment for all our students.</p>
-                    <h4 id="scrollspyHeading5">Fifth heading</h4>
-                    <p>Our college offers a variety of programs and activities to help students achieve their goals. We are committed to providing a supportive and enriching environment for all our students.</p>
+                    <h4 id="scrollspyHeading1">ABOUT KBSRIT</h4>
+                    <p>Kogila Bose Solomon Raj Institution of Technology inagurated on 1945. The college is NAAC A++ credited and acquired university status on 2002. We are consistently developing the next generation of india all through these years. Our Alumnis are the faces of India in their own fields.</p>
+                    <h4 id="scrollspyHeading2">Mission of college</h4>
+                    <p>At KBSRIT, we believe in nurturing minds and fostering growth. Our commitment to 'Education and Evolution' ensures that every student not only gains knowledge but also evolves into a well-rounded individual ready to face the challenges of tomorrow. Join us in our journey towards excellence and innovation.</p>
+                    <h4 id="scrollspyHeading3">College Moto & Values</h4>
+                    <p>Our college motto, "Education and Evolution," reflects our dedication to shaping adaptable and knowledgeable individuals. We focus on providing a dynamic learning environment that encourages both academic excellence and personal growth. By embracing change and innovation, we prepare our students to thrive in an ever-evolving world.</p>
+                    <h4 id="scrollspyHeading4">KBSRIT Achievements</h4>
+                    <p>KBSRIT has consistently demonstrated excellence in academics, with students achieving top ranks in university exams. Our faculty and students have contributed to numerous research projects, resulting in publications in prestigious journals. We take pride in our innovative projects, which have won accolades at national and international competitions. Additionally, our commitment to community service has made a positive impact on society.</p>
+                    <h4 id="scrollspyHeading5">Campus Environment</h4>
+                    <p>KBSRIT boasts a vibrant campus environment with spacious buildings and state-of-the-art laboratories that foster innovation and learning. Our well-stocked libraries provide a wealth of resources for students and faculty alike. The campus also features excellent sports facilities and a modern auditorium. Beyond the curriculum, we offer a variety of extracurricular activities and clubs that encourage students to explore their interests and develop new skills.</p>
                 </div>
                 <div className="video-box">
                 <iframe width="560" height="315" src="https://www.youtube.com/embed/6ehrDzVq0SU?si=bq_P5BOoFT3pjfJP" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
@@ -110,7 +111,9 @@ const Home = () => {
                     {alumniData.map((alumni, index) => (
                         <div key={index} className="alumni-slide">
                             <img src={alumni.img} alt={`Alumni ${index + 1}`} />
-                            <p>{alumni.message}</p>
+                            <p>{alumni.name}<br/>
+                            {alumni.designation}<br/>
+                            {alumni.message}</p>
                         </div>
                     ))}
                 </Slider>

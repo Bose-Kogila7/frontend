@@ -16,6 +16,7 @@ const Navbar = ({ onLogout }) => {
     return (
         <nav className="navbar">
             <div className="navbar-brand">
+                <img src="Logo2.jpg" alt="Logo" className="navbar-logo" />
                 <Link to="/">KBSR INSTITUTE OF TECHNOLOGY</Link>
             </div>
             <div className="navbar-links">
