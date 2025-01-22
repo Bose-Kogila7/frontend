@@ -26,10 +26,13 @@
     border: none;
     position: fixed; /* Fixed position to keep it at the left corner */
     top: calc(var(--navbar-height) + 20px); /* Position below the navbar */
-    left: 0; /* Position at the complete left corner */
+    left: 20 !important; /* Position at the complete left corner */
     z-index: 1001; /* Ensure it's above the sidebar */
     color: #2c3e50; /* Dark text color */
-    padding: 10px; /* Add some padding for better click area */
+    padding: 10px;
+    width: 50px;
+    margin-left: 20px;
+     /* Add some padding for better click area */
 }
 
 .profile-info {

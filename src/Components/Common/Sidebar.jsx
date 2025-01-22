@@ -22,7 +22,7 @@ const Sidebar = ({ user, sidebarOpen, toggleSidebar }) => {
     return (
         <>
             {/* Sidebar Toggle Button */}
-            <button className="sidebar-toggle" onClick={toggleSidebar}>
+            <button className="sidebar-toggle " style={{left:"0",position:"absolute"}} onClick={toggleSidebar}>
                 {sidebarOpen ? '✖' : '☰'}
             </button>
 
