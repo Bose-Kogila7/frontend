@@ -15,7 +15,7 @@ const UpdateProfile = () => {
         if (!location.state?.user) {
             const fetchStudentData = async () => {
                 try {
-                    const response = await axiosInstance.get('/api/student/profile');
+                    const response = await axiosInstance.get(`/api/student/profile`);
                     setStudent(response.data);
                     setUpdatedData(response.data);
                     setLoading(false);
@@ -27,20 +27,20 @@ const UpdateProfile = () => {
 
             fetchStudentData();
         }
-    }, [location.state?.user]);
+    }, [location.state?.user, studentId]);
 
     const handleChange = (e) => {
         const { name, value } = e.target;
         setUpdatedData({ ...updatedData, [name]: value });
     };
 
-    // Function to handle file upload
     const handleFileUpload = (e) => {
         const file = e.target.files[0];
         if (file) {
             const reader = new FileReader();
             reader.onloadend = () => {
-                setUpdatedData({ ...updatedData, photo: reader.result }); // Set Base64 string to photo field
+                const base64String = reader.result.split(',')[1]; // Extract Base64 string
+                setUpdatedData({ ...updatedData, photo: base64String });
             };
             reader.readAsDataURL(file); // Convert file to Base64
         }
@@ -87,14 +87,9 @@ const UpdateProfile = () => {
                         <tr>
                             <td><label htmlFor="photo">Photo:</label></td>
                             <td>
-                                <input
-                                    type="text"
-                                    id="photo"
-                                    name="photo"
-                                    value={updatedData.photo}
-                                    onChange={handleChange}
-                                    readOnly // Make the input read-only
-                                />
+                                {updatedData.photo && (
+                                    <img src={updatedData.photo} alt="Profile" style={{ width: '100px', height: '100px' }} />
+                                )}
                                 <input
                                     type="file"
                                     id="upload-photo"

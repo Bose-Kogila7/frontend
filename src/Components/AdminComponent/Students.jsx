@@ -32,7 +32,6 @@ const Students = () => {
                     <tr>
                         <th>ID</th>
                         <th>User ID</th>
-                        <th>Photo</th>
                         <th>Department ID</th>
                         <th>Year</th>
                         <th>Name</th>
@@ -46,7 +45,6 @@ const Students = () => {
                         <tr key={student.id}>
                             <td>{student.id}</td>
                             <td>{student.userId}</td>
-                            <td>{student.photo}</td>
                             <td>{student.departmentId}</td>
                             <td>{student.year}</td>
                             <td>{student.name}</td>

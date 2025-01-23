@@ -1,9 +1,40 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import './Sidebar.css';
+import axiosInstance from '../AuthComponent/axiosConfig';
 
 const Sidebar = ({ user, sidebarOpen, toggleSidebar }) => {
     const navigate = useNavigate();
+    const [imageSrc, setImageSrc] = useState(null);
+
+    useEffect(() => {
+        if (user && user.id) {
+            let imageUrl;
+            if (user.role === 'student') {
+                imageUrl = `/api/student/image/${user.id}`;
+            } else if (user.role === 'faculty') {
+                imageUrl = `/api/faculty/image/${user.id}`;
+            } else {
+                setImageSrc('HomeLogo2.jpg'); // Set default image for other roles
+                return;
+            }
+
+            axiosInstance.get(imageUrl, { responseType: 'arraybuffer' })
+                .then(response => {
+                    const base64 = btoa(
+                        new Uint8Array(response.data).reduce(
+                            (data, byte) => data + String.fromCharCode(byte),
+                            ''
+                        )
+                    );
+                    setImageSrc(`data:image/jpeg;base64,${base64}`);
+                })
+                .catch(error => {
+                    console.error('Error fetching image:', error);
+                    alert('Failed to fetch image. Please try again later.');
+                });
+        }
+    }, [user]);
 
     const handleUpdate = () => {
         if (user.role === 'student') {
@@ -22,7 +53,7 @@ const Sidebar = ({ user, sidebarOpen, toggleSidebar }) => {
     return (
         <>
             {/* Sidebar Toggle Button */}
-            <button className="sidebar-toggle " style={{left:"0",position:"absolute"}} onClick={toggleSidebar}>
+            <button className="sidebar-toggle" style={{ left: "0", position: "absolute" }} onClick={toggleSidebar}>
                 {sidebarOpen ? '✖' : '☰'}
             </button>
 
@@ -31,7 +62,7 @@ const Sidebar = ({ user, sidebarOpen, toggleSidebar }) => {
                 <div className="sidebar-content">
                     <div className="profile-section">
                         <img
-                            src={user.photo || 'alumni2.jpg'} // Fallback if photo is missing
+                            src={imageSrc || 'alumni2.jpg'} // Use fetched image or fallback
                             alt="Profile"
                             className="profile-photo"
                             onError={(e) => {

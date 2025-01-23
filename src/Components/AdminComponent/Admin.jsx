@@ -63,6 +63,14 @@ const Admin = () => {
         navigate('/enrollments'); // Navigate to the Enrollments component
     };
 
+    const handleDeleteFaculty = () => {
+        navigate('/delete-faculty');
+    };
+
+    const handleDeleteStudent = () => {
+        navigate('/delete-student');
+    };
+
     if (loading) {
         return <p>Loading...</p>;
     }
@@ -74,7 +82,7 @@ const Admin = () => {
     return (
         <div className="admin-container">
             <header className="admin-header">
-                <h1>Admin Dashboard</h1>
+                <h1>ADMIN Dashboard</h1>
             </header>
             <div className="content">
                 <Sidebar
@@ -93,11 +101,12 @@ const Admin = () => {
                             <button onClick={handleAddFaculty}>Add Faculty</button>
                             <button onClick={handleViewUsers}>View Users</button>
                             <button onClick={handleViewEnrollments}>View Enrollments</button>
+                            <button onClick={handleDeleteFaculty}>Delete Faculty</button>
+                            <button onClick={handleDeleteStudent}>Delete Student</button>
                         </div>
                     </div>
                 </main>
             </div>
-            
         </div>
     );
 };

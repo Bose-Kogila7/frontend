@@ -32,7 +32,6 @@ const FacultyList = () => {
                     <tr>
                         <th>ID</th>
                         <th>User ID</th>
-                        <th>Photo</th>
                         <th>Name</th>
                         <th>Email</th>
                         <th>Phone</th>
@@ -46,7 +45,6 @@ const FacultyList = () => {
                         <tr key={facultyMember.id}>
                             <td>{facultyMember.id}</td>
                             <td>{facultyMember.userId}</td>
-                            <td>{facultyMember.photo}</td>
                             <td>{facultyMember.name}</td>
                             <td>{facultyMember.email}</td>
                             <td>{facultyMember.phone}</td>

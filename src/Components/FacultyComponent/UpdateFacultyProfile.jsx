@@ -31,6 +31,18 @@ const UpdateFacultyProfile = () => {
         setUpdatedData({ ...updatedData, [name]: value });
     };
 
+    const handleFileUpload = (e) => {
+        const file = e.target.files[0];
+        if (file) {
+            const reader = new FileReader();
+            reader.onloadend = () => {
+                const base64String = reader.result.split(',')[1]; // Extract Base64 string
+                setUpdatedData({ ...updatedData, photo: base64String });
+            };
+            reader.readAsDataURL(file); // Convert file to Base64
+        }
+    };
+
     const handleSubmit = async (e) => {
         e.preventDefault();
         const confirmUpdate = window.confirm("Are you sure you want to update?");
@@ -73,7 +85,25 @@ const UpdateFacultyProfile = () => {
                     <tbody>
                         <tr>
                             <td><label htmlFor="photo">Photo:</label></td>
-                            <td><input type="text" id="photo" name="photo" value={updatedData.photo} onChange={handleChange} /></td>
+                            <td>
+                                {updatedData.photo && (
+                                    <img src={updatedData.photo} alt="Profile" style={{ width: '100px', height: '100px' }} />
+                                )}
+                                <input
+                                    type="file"
+                                    id="upload-photo"
+                                    accept="image/*"
+                                    style={{ display: 'none' }}
+                                    onChange={handleFileUpload}
+                                />
+                                <button
+                                    type="button"
+                                    onClick={() => document.getElementById('upload-photo').click()}
+                                    className="upload-photo-button"
+                                >
+                                    Upload Photo
+                                </button>
+                            </td>
                         </tr>
                         <tr>
                             <td><label htmlFor="name">Name:</label></td>

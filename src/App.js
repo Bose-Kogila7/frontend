@@ -26,6 +26,8 @@ import Enrollments from './Components/AdminComponent/Enrollments';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import 'bootstrap/dist/js/bootstrap.bundle.min';
 import './App.css';
+import DeleteFaculty from './Components/AdminComponent/DeleteFaculty';
+import DeleteStudent from './Components/AdminComponent/DeleteStudent';
 
 const App = () => {
     const [userRole, setUserRole] = useState(localStorage.getItem('role'));
@@ -77,6 +79,8 @@ const App = () => {
                     <Route path="/add-student" element={<AddStudent />} />
                     <Route path="/add-faculty" element={<AddFaculty />} />
                     <Route path="/enrollments" element={<Enrollments />} />
+                    <Route path="/delete-faculty" element={<DeleteFaculty />} />
+                    <Route path="/delete-student" element={<DeleteStudent />} />
                 </Routes>
                 <Footer />
             </div>
