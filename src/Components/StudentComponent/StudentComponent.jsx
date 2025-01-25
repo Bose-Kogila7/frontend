@@ -65,7 +65,7 @@ const Student = () => {
                             </div>
                             <div className="speech-text">
                                 <h3>Chancellor's Speech</h3>
-                                <p>Welcome to our esteemed institution. Our mission is to provide quality education and foster a nurturing environment for our students. We are committed to excellence and innovation in all our endeavors.</p>
+                                <p>Dear {student.name}, Welcome to our esteemed institution.Believe in your limitless potential and embrace every challenge as a stepping stone to greatness. Your passion and determination will guide you to incredible heights. We are here to help you reach the heights you aspire to.</p>
                             </div>
                         </div>
                         <div className="student-actions">

@@ -3,7 +3,9 @@ import axiosInstance from './axiosConfig';
 import { useNavigate } from 'react-router-dom';
 import './Login.css';
 
+
 const Login = () => {
+
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
     const [error, setError] = useState('');
@@ -26,6 +28,8 @@ const Login = () => {
                 console.log('Stored role:', localStorage.getItem('role'));
                 console.log('Stored ID:', localStorage.getItem('id'));
 
+
+                // Navigate based on role
                 if (role === 'student') {
                     navigate('/student');
                 } else if (role === 'faculty') {

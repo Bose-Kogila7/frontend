@@ -52,7 +52,7 @@ const UpdateProfile = () => {
             const payload = {
                 id: updatedData.id,
                 userId: updatedData.userId,
-                photo: updatedData.photo, // Include the Base64 photo string
+                photo: updatedData.photo, 
                 departmentId: updatedData.departmentId,
                 year: updatedData.year,
                 name: updatedData.name,

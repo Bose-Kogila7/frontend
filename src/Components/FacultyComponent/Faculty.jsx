@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import axiosInstance from '../AuthComponent/axiosConfig';
 import Sidebar from '../Common/Sidebar';
+import '../Common/Sidebar.css';
 import './FacultyComponent.css';
 
 const Faculty = () => {
@@ -79,11 +80,12 @@ const Faculty = () => {
                                 </div>
                                 <div className="speech-text">
                                     <h3>Chancellor's Speech</h3>
-                                    <p>Welcome to our esteemed institution. Our mission is to provide quality education and foster a nurturing environment for our students. We are committed to excellence and innovation in all our endeavors.</p>
+                                    <p>Mr.{faculty.name}, I am deeply grateful for your unwavering dedication and commitment to our institution. Your tireless efforts in nurturing and guiding our students are the cornerstone of our success. Together, let us continue to inspire and empower the next generation of leaders.</p>
                                 </div>
                             </div>
                             <div className="faculty-actions">
                                 <button onClick={viewStudentsByCourse}>View Students by Course</button>
+                                <button onClick={() => navigate('/student/search')}>Search Students</button>
                                 <button onClick={handleUpdate}>Update Profile</button>
                             </div>
                         </div>

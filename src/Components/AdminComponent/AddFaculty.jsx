@@ -21,6 +21,18 @@ const AddFaculty = () => {
         setFaculty({ ...faculty, [name]: value });
     };
 
+    const handleFileUpload = (e) => {
+        const file = e.target.files[0];
+        if (file) {
+            const reader = new FileReader();
+            reader.onloadend = () => {
+                const base64String = reader.result.split(',')[1]; // Extract Base64 string
+                setFaculty({ ...faculty, photo: base64String });
+            };
+            reader.readAsDataURL(file); // Convert file to Base64
+        }
+    };
+
     const handleSubmit = async (e) => {
         e.preventDefault();
         const confirm = window.confirm("Are you sure you want to add this faculty?");
@@ -43,7 +55,23 @@ const AddFaculty = () => {
             <form onSubmit={handleSubmit} className="add-faculty-form">
                 <label>
                     Photo:
-                    <input type="text" name="photo" value={faculty.photo} onChange={handleChange} required />
+                    {faculty.photo && (
+                        <img src={`data:image/jpeg;base64,${faculty.photo}`} alt="Profile" style={{ width: '100px', height: '100px' }} />
+                    )}
+                    <input
+                        type="file"
+                        id="upload-photo"
+                        accept="image/*"
+                        style={{ display: 'none' }}
+                        onChange={handleFileUpload}
+                    />
+                    <button
+                        type="button"
+                        onClick={() => document.getElementById('upload-photo').click()}
+                        className="upload-photo-button"
+                    >
+                        Upload Photo
+                    </button>
                 </label>
                 <label>
                     Name:

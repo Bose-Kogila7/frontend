@@ -1,4 +1,3 @@
-// src/Signup.js
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import axiosInstance from './axiosConfig';
@@ -11,7 +10,6 @@ const Signup = () => {
     const [name, setName] = useState('');
     const [email, setEmail] = useState('');
     const [phone, setPhone] = useState('');
-    const [message, setMessage] = useState('');
     const [errorMessage, setErrorMessage] = useState('');
     const navigate = useNavigate();
 
@@ -19,11 +17,8 @@ const Signup = () => {
         e.preventDefault();
         try {
             await axiosInstance.post('http://localhost:8089/api/auth/signup', { username, password, role, name, email, phone });
-            setMessage('Account successfully created!');
-            setTimeout(() => {
-                setMessage('');
-                navigate('/login');
-            }, 2000); // Redirect after 2 seconds
+            alert('Your account created successfully, Please log-in!!');
+            navigate('/login');
         } catch (error) {
             console.error('Signup failed:', error);
             setErrorMessage(error.response?.data || 'Signup failed. Please try again.');
@@ -60,13 +55,6 @@ const Signup = () => {
                 </label>
                 <button type="submit">Signup</button>
             </form>
-            {message && (
-                <div className="modal">
-                    <div className="modal-content">
-                        <p>{message}</p>
-                    </div>
-                </div>
-            )}
             {errorMessage && (
                 <div className="error-message">
                     <p>{errorMessage}</p>

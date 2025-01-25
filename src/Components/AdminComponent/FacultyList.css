@@ -1,7 +1,8 @@
-/* src/Components/UserComponent/FacultyList.css */
 .faculty-container {
     padding: 20px;
     animation: fadeIn 1s ease-in-out;
+    overflow-y: auto; /* Add vertical scroll if content overflows */
+    max-height: 100vh; /* Ensure the container doesn't exceed the viewport height */
 }
 
 .faculty-table {

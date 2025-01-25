@@ -61,7 +61,7 @@ const App = () => {
                     <Route path="/" element={<Home />} />
                     <Route path="/login" element={<Login />} />
                     <Route path="/signup" element={<Signup />} />
-                    <Route path="/profile" element={<Profile />} />
+                    <Route path="/profile" element={<Profile onLogout={handleLogout} />} />
                     <Route path="/courses" element={<Courses />} />
                     <Route path="/departments" element={<Departments />} />
                     <Route path="/student" element={userRole === 'student' ? <Student /> : <Navigate to="/" />} />
