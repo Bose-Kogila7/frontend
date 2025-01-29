@@ -7,7 +7,7 @@ const ViewCourses = () => {
 
     useEffect(() => {
         const fetchCourses = async () => {
-            const id = localStorage.getItem('id'); // Getting the ID from local storage
+            const id = localStorage.getItem('id'); // Get the ID from local storage
             if (id) {
                 try {
                     const response = await axiosInstance.get(`/api/student/course/${id}`);

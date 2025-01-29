@@ -32,7 +32,8 @@ const DeleteFaculty = () => {
     const handleDelete = async (id) => {
         if (window.confirm('Are you sure you want to delete this faculty?')) {
             try {
-                await axiosInstance.delete(`/api/admin/deleteFaculty/${id}`);
+                const dto = { id };
+                await axiosInstance.delete(`/api/admin/deleteFaculty`, { data: dto });
                 setFacultyList(facultyList.filter(faculty => faculty.id !== id));
             } catch (error) {
                 console.error('Error deleting faculty:', error);

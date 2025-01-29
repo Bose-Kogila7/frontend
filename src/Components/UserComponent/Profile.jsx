@@ -26,7 +26,8 @@ const Profile = ({ onLogout }) => {
         const confirmDelete = window.confirm('Are you sure you want to delete your profile?');
         if (confirmDelete) {
             try {
-                await axiosInstance.delete(`/api/users/deleteUser/${user.id}`);
+                const dto = { id:user.id };
+                await axiosInstance.delete(`/api/users/deleteUser`, { data:dto });
                 alert('Profile deleted successfully.');
                 onLogout(); // Call the logout function
                 navigate('/');

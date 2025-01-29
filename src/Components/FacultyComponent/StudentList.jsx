@@ -11,7 +11,8 @@ const StudentList = () => {
     useEffect(() => {
         const fetchStudents = async () => {
             try {
-                const response = await axiosInstance.get(`/api/faculty/student-by-course/${facultyId}`);
+                const dto = { facultyId };
+                const response = await axiosInstance.get(`/api/faculty/student-by-course`,{ data:dto });
                 setStudents(response.data);
                 setLoading(false);
             } catch (error) {

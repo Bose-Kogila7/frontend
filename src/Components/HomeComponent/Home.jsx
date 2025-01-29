@@ -13,7 +13,7 @@ const Home = () => {
         slidesToShow: 3,
         slidesToScroll: 1,
         autoplay: true,
-        autoplaySpeed: 3000,
+        autoplaySpeed: 2000,
         responsive: [
             {
                 breakpoint: 1024,
@@ -135,7 +135,7 @@ const Home = () => {
                     <div className="address-box">
                         <p><strong>College Name:</strong> KBSRIT</p>
                         <p><strong>Landmark:</strong> Near Central Park</p>
-                        <p><strong>Area:</strong> Downtown</p>
+                        <p><strong>Area:</strong> Vital Nagar</p>
                         <p><strong>Pincode:</strong> 123456</p>
                         <p><strong>City:</strong> Coimbatore</p>
                         <p><strong>State:</strong> Tamil Nadu</p>

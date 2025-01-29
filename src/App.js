@@ -23,8 +23,6 @@ import Signup from './Components/AuthComponent/Signup';
 import AddStudent from './Components/AdminComponent/AddStudent';
 import AddFaculty from './Components/AdminComponent/AddFaculty';
 import Enrollments from './Components/AdminComponent/Enrollments';
-import 'bootstrap/dist/css/bootstrap.min.css';
-import 'bootstrap/dist/js/bootstrap.bundle.min';
 import './App.css';
 import DeleteFaculty from './Components/AdminComponent/DeleteFaculty';
 import DeleteStudent from './Components/AdminComponent/DeleteStudent';

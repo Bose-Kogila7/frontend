@@ -22,9 +22,9 @@ const Navbar = ({ onLogout }) => {
             <div className="navbar-links">
                 <Link to="/">Home</Link>
                 <a href="#about">About</a>
-                <a href="#programs">Programs</a>
-                <a href="#admissions">Admissions</a>
-                <a href="#contact">Contact</a>
+                <a href="#programs">Infrastructure</a>
+                <a href="#admissions">Alumni</a>
+                <a href="#contact">Address</a>
                 {token ? (
                     <>
                         <Link to="/profile">Profile</Link>

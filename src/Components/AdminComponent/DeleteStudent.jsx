@@ -32,7 +32,8 @@ const DeleteStudent = () => {
     const handleDelete = async (id) => {
         if (window.confirm('Are you sure you want to delete this student?')) {
             try {
-                await axiosInstance.delete(`/api/admin/deleteStudent/${id}`);
+                const dto = { id }; //creating dto object
+                await axiosInstance.delete(`/api/admin/deleteStudent`, { data: dto });
                 setStudentList(studentList.filter(student => student.id !== id));
             } catch (error) {
                 console.error('Error deleting student:', error);

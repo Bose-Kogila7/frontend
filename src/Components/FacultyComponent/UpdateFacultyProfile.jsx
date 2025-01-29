@@ -49,8 +49,8 @@ const UpdateFacultyProfile = () => {
         if (confirmUpdate) {
             try {
                 const payload = {
-                    id: updatedData.id,
-                    userId: updatedData.userId,
+                    id: facultyId,
+                    userId: facultyId,
                     photo: updatedData.photo,
                     name: updatedData.name,
                     email: updatedData.email,
@@ -60,7 +60,7 @@ const UpdateFacultyProfile = () => {
                     officeHours: updatedData.officeHours,
                     password: updatedData.password || faculty.password // Ensure password is included
                 };
-                await axiosInstance.put(`/api/faculty/update/${facultyId}`, payload);
+                await axiosInstance.put(`/api/faculty/update`, payload);
                 alert('Profile updated successfully');
                 navigate('/faculty'); // Redirect to the faculty component page
             } catch (error) {

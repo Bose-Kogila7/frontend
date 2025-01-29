@@ -62,11 +62,11 @@ const Sidebar = ({ user, sidebarOpen, toggleSidebar }) => {
                 <div className="sidebar-content">
                     <div className="profile-section">
                         <img
-                            src={imageSrc || 'alumni2.jpg'} // Use fetched image or fallback
+                            src={imageSrc || 'CollegeCourse.jpg'} // Use fetched image or fallback
                             alt="Profile"
                             className="profile-photo"
                             onError={(e) => {
-                                e.target.src = 'alumni1.jpg'; // Fallback if the image fails to load
+                                e.target.src = 'CollegeCourse.jpg'; // Fallback if the image fails to load
                             }}
                         />
                         <h3 className="profile-name">{user.username}</h3>

@@ -10,6 +10,7 @@ const UpdateProfile = () => {
     const [student, setStudent] = useState(location.state?.user || null);
     const [loading, setLoading] = useState(!location.state?.user);
     const [updatedData, setUpdatedData] = useState(location.state?.user || {});
+    const [error, setError] = useState(null); // State for error message
 
     useEffect(() => {
         if (!location.state?.user) {
@@ -48,25 +49,29 @@ const UpdateProfile = () => {
 
     const handleSubmit = async (e) => {
         e.preventDefault();
-        try {
-            const payload = {
-                id: updatedData.id,
-                userId: updatedData.userId,
-                photo: updatedData.photo, 
-                departmentId: updatedData.departmentId,
-                year: updatedData.year,
-                name: updatedData.name,
-                email: updatedData.email,
-                phone: updatedData.phone,
-                userName: updatedData.userName,
-                role: updatedData.role,
-                password: updatedData.password || student.password,
-            };
-            await axiosInstance.put(`/api/student/update/${studentId}`, payload);
-            alert('Profile updated successfully');
-            navigate('/student'); // Redirect to the student component page
-        } catch (error) {
-            console.error('Error updating profile:', error);
+        const confirmUpdate = window.confirm("Are you sure you want to update?");
+        if (confirmUpdate) {
+            try {
+                const payload = {
+                    id: studentId,
+                    userId: updatedData.userId,
+                    photo: updatedData.photo, 
+                    departmentId: updatedData.departmentId,
+                    year: updatedData.year,
+                    name: updatedData.name,
+                    email: updatedData.email,
+                    phone: updatedData.phone,
+                    userName: updatedData.userName,
+                    role: updatedData.role,
+                    password: updatedData.password || student.password,
+                };
+                await axiosInstance.put(`/api/student/update`, payload);
+                alert('Profile updated successfully');
+                navigate('/student'); // Redirect to the student component page
+            } catch (error) {
+                console.error('Error updating profile:', error);
+                setError(error.response?.data?.message || 'An error occurred while updating the profile.please check you entered all the fields or contact your administrator');
+            }
         }
     };
 
@@ -81,6 +86,7 @@ const UpdateProfile = () => {
     return (
         <div className="update-profile-container">
             <h2>Update Profile</h2>
+            {error && <p className="error-message">{error}</p>} {/* Display error message */}
             <form onSubmit={handleSubmit}>
                 <table>
                     <tbody>

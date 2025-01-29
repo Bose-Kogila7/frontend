@@ -31,9 +31,7 @@ const Student = () => {
         setSidebarOpen(!sidebarOpen);
     };
 
-    const handleUpdate = () => {
-        navigate(`/student/update/${student.id}`);
-    };
+   
 
     if (loading) {
         return <p>Loading...</p>;
@@ -51,7 +49,6 @@ const Student = () => {
             <div className="content">
                 <Sidebar
                     user={student}
-                    handleUpdate={handleUpdate}
                     sidebarOpen={sidebarOpen}
                     toggleSidebar={toggleSidebar}
                 />
